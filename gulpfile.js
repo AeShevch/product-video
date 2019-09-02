@@ -6,12 +6,13 @@ const gulp = require('gulp'),
     del = require('del'),
     concat = require('gulp-concat'),
     plumber = require('gulp-plumber'),
-    livereload = require('gulp-livereload');
+    babel = require('gulp-babel'),
+    uglify = require('gulp-uglify');
 
 function scss() {
     return gulp.src(
         [
-            'src/scss/*.scss'
+            'src/style.scss'
         ])
         .pipe(plumber())
         .pipe(sass())
@@ -23,36 +24,36 @@ function scss() {
                 }
             }
         }))
-        .pipe(concat("bundle.css"))
+        .pipe(concat("style.css"))
         .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('dist/css'))
-        .pipe(livereload());
+        .pipe(gulp.dest('dist'))
 }
 
-function html() {
-    return gulp.src('index.html')
-        .pipe(livereload());
+function js() {
+    return gulp.src('src/script.js')
+        .pipe(babel())
+        .pipe(uglify({
+            toplevel: true
+        }))
+        .pipe(gulp.dest("dist"));
 }
 
 function clean() {
-    return del(['dist/css/style.css'])
+    return del(['dist/*'])
 }
 
 gulp.task('scss', scss);
-gulp.task('html', html);
 
 function watch() {
-    livereload.listen();
-    gulp.watch('src/scss/*.scss', scss);
-    gulp.watch('index.html', html);
-    // gulp.watch('src/script.js', js);
+    gulp.watch('src/style.scss', scss);
+    gulp.watch('src/script.js', js);
 }
 
 gulp.task('watch', watch);
 
 gulp.task('build', gulp.series(
     clean,
-    gulp.parallel(scss)
+    gulp.parallel(scss, js)
 ));
 
 gulp.task('default', gulp.series('build', 'watch'));

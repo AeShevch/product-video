@@ -1,0 +1,47 @@
+.video-product {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: #fff;
+
+    &__wrap {
+        position: relative;
+    }
+}
+
+.show-video-btn {
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:focus {
+        outline: none;
+
+        .show-video-svg__play {
+            fill: #000;
+        }
+    }
+
+    &__img {
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.show-video-svg {
+    &__play{
+        transition: .3s;
+    }
+
+    &:hover &__play {
+        fill: #000;
+    }
+
+}
