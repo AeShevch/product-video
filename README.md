@@ -7,6 +7,5 @@
 <br>
 <code>
 < ? php
-// Подключаем видео для товаров из модуля product-video
 include PATH_TEMPLATE.'/modules/product-video/index.php'; ?>
 </code>
