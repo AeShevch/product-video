@@ -1,11 +1,8 @@
-# Scss-gulp-boilerplate
-Very simple, only SCSS Gulp boilerplate
+# Видео для товара для Moguta.CMS
 
-## devDependencies:
-* gulp-autoprefixer
-* gulp-clean
-* gulp-concat
-* gulp-livereload
-* gulp-plumber
-* gulp-sass
-* gulp-sourcemaps
+Модуль для шаблона на Moguta.CMS, вставляющий видео товара в из строковой хар-ки с id 117 в контейнер с классом .js-video-wrapper
+
+##Вставляется в шаблон с помощью:
+<?php
+// Подключаем видео для товаров из модуля product-video
+include PATH_TEMPLATE.'/modules/product-video/index.php'; ?>
