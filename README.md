@@ -6,7 +6,7 @@
 ## Вставляется в шаблон с помощью:
 <br>
 <code>
-<?php
+< ? php
 // Подключаем видео для товаров из модуля product-video
 include PATH_TEMPLATE.'/modules/product-video/index.php'; ?>
 </code>
